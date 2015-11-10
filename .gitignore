@@ -1,0 +1,7 @@
+_site
+*~
+*#
+.bundle
+Gemfile.lock
+.settings
+WebContent

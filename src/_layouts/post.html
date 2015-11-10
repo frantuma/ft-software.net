@@ -1,0 +1,50 @@
+---
+layout: root
+is_post: true
+---
+
+<section id="post">
+  <article>
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	<img class="author img-responsive img-circle" src="https://avatars.githubusercontent.com/{{ page.author }}"/>
+	{% assign title_parts = page.title | split: ' >> ' %}
+	<h2 class="post-title">
+	  {{ title_parts[1] }}
+	</h2>
+	<h3 class="post-subtitle">
+	  {% if page.guest == true %}A guest post by {% endif %}
+	  <a href="https://github.com/{{ page.author }}">{{ page.author }}</a> on {{ page.date || date_to_string }}
+	</h3>
+      </div>
+    </div>
+
+
+
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+{% assign parts = content | split: 'XXXXX' %}
+{{ parts.first }}
+{% if parts[1] %}
+{{ parts[1] }}
+{% endif %}
+
+	  <div class="social-sharing">
+	    <a href="https://twitter.com/intent/tweet?text={{ title_parts[1] }}&url={{ site.url }}{{ page.url }}&via={{ site.twitter_username }}&related={{ site.twitter_username }}" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Tweet</a>
+	    <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" rel="nofollow" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a> 
+	    <a href="https://news.ycombinator.com/submitlink?u={{ site.url }}{{ page.url }}&t={{ title_parts[1] }}" rel="nofollow" title="Share on Hacker News" target="_blank" class="btn btn-hn"><i class="fa fa-hacker-news"></i> Hacker News</a>
+	  </div>
+	</div>
+      </div>
+
+      <div class="row row-centered">
+	<div class="col-md-3"></div>
+	<div class="col-md-6"></div>
+	<div class="col-md-3"></div>
+      </div>
+    
+<!-- Final scripts after vital HTML elements in post -->
+  </article>
+</section>

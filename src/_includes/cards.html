@@ -1,0 +1,19 @@
+{% if page.is_post == true %}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@ft-global">
+<meta name="twitter:creator" content="@ft-global">
+<meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+
+{% assign title_parts = page.title | split: " >> " %}
+<meta name="twitter:title" content="{{ title_parts[1] }}">
+
+{% assign content_parts = page.content | split: 'XXXXX' %}
+<meta name="twitter:description" content="{{ content_parts.first | markdownify | strip_html }}">
+
+{% if page.image %}
+<meta name="twitter:image" content="{{ site.url }}{{ page.image }}" />
+{% endif %}
+{% else %}
+<meta name="twitter:card" content="app">
+<meta name="twitter:site" content="@ft-global">
+{% endif %}
